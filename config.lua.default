@@ -1,0 +1,44 @@
+local awful = require("awful")
+
+local config = {
+    theme = "janecky",
+    terminal = "alacritty",
+    modkey = "Mod4",
+
+    cpucount = 4,
+    disks = { "/dev/sda3", "/dev/sdb1", },
+    cpusensor = { "cpu", "/sys/class/hwmon/hwmon1/temp1_input", },
+    gpusensor = { "gpu", "/sys/class/hwmon/hwmon0/temp1_input", },
+    mobosensor = "nct6776-isa-0290",
+
+    autorun = {
+        "picom -b",
+        "numlockx",
+        "udiskie",
+        "unclutter",
+        "xautolock -time 60 -locker 'systemctl suspend'",
+        "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
+        "/usr/lib/geoclue-2.0/demos/agent",
+        "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets",
+    },
+}
+
+tag.connect_signal("request::default_layouts", function()
+    awful.layout.append_default_layouts({
+        awful.layout.suit.tile,
+        awful.layout.suit.tile.bottom,
+        awful.layout.suit.floating,
+        -- awful.layout.suit.tile.left,
+        -- awful.layout.suit.tile.top,
+        awful.layout.suit.fair,
+        -- awful.layout.suit.fair.horizontal,
+        -- awful.layout.suit.spiral,
+        -- awful.layout.suit.spiral.dwindle,
+        -- awful.layout.suit.max,
+        -- awful.layout.suit.max.fullscreen,
+        -- awful.layout.suit.magnifier,
+        -- awful.layout.suit.corner.nw,
+    })
+end)
+
+return config
