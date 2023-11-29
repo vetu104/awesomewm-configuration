@@ -1,11 +1,11 @@
 -- Only allow symbols available in all Lua versions
-std = "min"
+-- std = "min"
 
 -- Get rid of "unused argument self"-warnings
-self = false
+-- self = false
 
 -- The unit tests can use busted
-files["spec"].std = "+busted"
+-- files["spec"].std = "+busted"
 
 -- The default config may set global variables
 files["awesomerc.lua"].allow_defined_top = true
@@ -13,6 +13,7 @@ files["awesomerc.lua"].allow_defined_top = true
 -- This file itself
 files[".luacheckrc"].ignore = {"111", "112", "131"}
 
+max_line_length = 80
 -- Theme files, keybind file, ignore max line length
 files["themes/*"].ignore = {"631"}
 files["keys.lua"].ignore = {"631"}
@@ -45,13 +46,6 @@ globals = {
     "mouse",
     "root",
     "client",
-    --custom:
-    "terminal",
-    "editor",
-    "editor_cmd",
-    "mytextclock",
-    "widget",
-    "testplayers",
 }
 
 -- Enable cache (uses .luacheckcache relative to this rc file).

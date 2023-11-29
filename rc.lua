@@ -8,8 +8,9 @@ local config = require("config")
 local dpi = beautiful.xresources.apply_dpi
 require("awful.autofocus")
 require("awful.hotkeys_popup.keys")
-require("daemons.geoclue")
-require("daemons.weather")
+-- Start daemons
+require("daemons.geoclue"):start()
+require("daemons.weather"):start()
 
 
 -- {{{ Error handling
